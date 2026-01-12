@@ -5,7 +5,8 @@ import DishTable from './components/DishTable'
 import Student from './components/Student'
 
 // PENDIENTE: Cree la interfaz
-import { type Dish } from './interface/Dish'
+import { type Dish } from './types/Dish'
+import useFetchData from './hooks/useFetchData';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   let url = "https://raw.githubusercontent.com/aavendan/datos/refs/heads/main/tasteatlas/bestdishes100-2425.json"
   
   // PENDIENTE: Variable de estado y la función de modificación. 
-  
+  const dataFetcherOutput = useFetchData();
 
 
   // PENDIENTE: 
@@ -30,7 +31,13 @@ function App() {
         <Grid size={{ xs: 12 }}>
 
           {/* PENDIENTE: Envíe sus datos (apellidos, nombres y paralelo) como props del componente */}
-          <Student></Student>
+          {dataFetcherOutput &&
+        (<Student
+            apellidos='apellidos'
+            nombres='nombres'
+            paralelo='paralelo'
+             />)}
+    </Grid>
 
         </Grid>
         
